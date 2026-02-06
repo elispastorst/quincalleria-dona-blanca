@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quincallería Doña Blanca - 40 años sirviendo a Cúcuta</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* RESET Y CONFIGURACIÓN GENERAL */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ff7b54, #ffd166);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* TARJETA PRINCIPAL */
+        .business-card {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 25px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* ENCABEZADO CON FOTO */
+        .card-header {
+            background: linear-gradient(to right, #ff7b54, #ff9554);
+            color: white;
+            padding: 40px 30px 30px;
+            position: relative;
+            border-bottom: 8px solid #4d96ff;
+            text-align: center;
+        }
+
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+            margin-bottom: 20px;
+        }
+
+        .profile-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 8px solid white;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            object-fit: cover;
+            object-position: center;
+            background-color: #f0f0f0; /* Color de fondo mientras carga la foto */
+        }
+
+        .title-container h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            font-weight: 900;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            color: white;
+        }
+
+        .title-container .years-badge {
+            display: inline-block;
+            background: #4d96ff;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-top: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .title-container .subtitle {
+            font-size: 1.4rem;
+            opacity: 0.95;
+            margin-top: 15px;
+            font-weight: 600;
+        }
+
+        /* CONTENIDO PRINCIPAL */
+        .card-content {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0;
+        }
+
+        .main-content {
+            flex: 2;
+            min-width: 300px;
+            padding: 40px;
+        }
+
+        .sidebar {
+            flex: 1;
+            min-width: 300px;
+            background: linear-gradient(to bottom, #f8f9ff, #eef2ff);
+            padding: 40px 30px;
+            border-left: 1px solid #e0e0e0;
+        }
+
+        .section-title {
+            color: #ff7b54;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            padding-bottom: 12px;
+            border-bottom: 4px solid #4d96ff;
+            display: inline-block;
+            font-weight: 800;
+        }
+
+        /* MENÚ MISIÓN/VISIÓN/VALORES */
+        .mvvtabs {
+            display: flex;
+            background: #f0f0f0;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .mvvtabs button {
+            flex: 1;
+            padding: 20px 10px;
+            border: none;
+            background: transparent;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #555;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .mvvtabs button:hover {
+            background: rgba(255, 123, 84, 0.15);
+        }
+
+        .mvvtabs button.active {
+            background: #ff7b54;
+            color: white;
+        }
+
+        .mvv-content {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+            min-height: 320px;
+        }
+
+        .mvv-item {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .mvv-item.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .mvv-item h3 {
+            color: #4d96ff;
+            font-size: 2rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .mvv-item h3 i {
+            color: #ff7b54;
+        }
+
+        .mvv-item p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #444;
+            margin-bottom: 20px;
+        }
+
+        /* SECCIÓN DE TESTIMONIOS */
+        .testimonials-container {
+            margin: 40px 0;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 25px;
+            border-left: 6px solid #ff7b54;
+            transition: transform 0.3s;
+        }
+
+        .testimonial:hover {
+            transform: translateY(-8px);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 15px;
+        }
+
+        .testimonial-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff7b54, #ff9554);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .testimonial-info h4 {
+            font-size: 1.4rem;
+            color: #4d96ff;
+            margin-bottom: 5px;
+        }
+
+        .testimonial-info p {
+            color: #666;
+            font-style: italic;
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #555;
+            font-style: italic;
+        }
+
+        .testimonial-text i {
+            color: #ff7b54;
+            margin-right: 10px;
+        }
+
+        /* CATÁLOGO DE PRODUCTOS/SERVICIOS */
+        .catalog-container {
+            margin: 40px 0;
+        }
+
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .catalog-item {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: all 0.3s;
+            border-top: 5px solid #4d96ff;
+        }
+
+        .catalog-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .catalog-icon {
+            font-size: 2.8rem;
+            color: #ff7b54;
+            margin-bottom: 20px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .catalog-item h4 {
+            font-size: 1.4rem;
+            color: #4d96ff;
+            margin-bottom: 15px;
+            min-height: 45px;
+        }
+
+        .catalog-item ul {
+            list-style: none;
+            text-align: left;
+            padding-left: 10px;
+        }
+
+        .catalog-item li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .catalog-item li:last-child {
+            border-bottom: none;
+        }
+
+        .catalog-item li:before {
+            content: "✓ ";
+            color: #ff7b54;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        /* INFORMACIÓN DE CONTACTO */
+        .contact-info {
+            list-style: none;
+            margin-top: 40px;
+        }
+
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding: 25px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .contact-info li:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .contact-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #4d96ff, #6aa7ff);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.8rem;
+            margin-right: 25px;
+            flex-shrink: 0;
+        }
+
+        .contact-text h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #ff7b54;
+            font-weight: 700;
+        }
+
+        .contact-text p {
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* SECCIÓN EMPRENDEWORLD */
+        .emprendeworld-section {
+            background: linear-gradient(135deg, #4d96ff, #6aa7ff);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 40px 0;
+            box-shadow: 0 15px 35px rgba(77, 150, 255, 0.3);
+        }
+
+        .emprendeworld-section h3 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .emprendeworld-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .qr-container {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            display: inline-block;
+            margin: 20px auto;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            background: #f5f5f5;
+            border-radius: 10px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+            border: 3px solid #ff7b54;
+            font-weight: bold;
+        }
+
+        .qr-placeholder {
+            font-size: 0.9rem;
+            color: #666;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .btn-emprendeworld {
+            display: inline-block;
+            background: #ff7b54;
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-top: 25px;
+            box-shadow: 0 8px 20px rgba(255, 123, 84, 0.3);
+            transition: all 0.3s;
+        }
+
+        .btn-emprendeworld:hover {
+            background: #ff9554;
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(255, 123, 84, 0.4);
+        }
+
+        /* FOOTER */
+        .card-footer {
+            background: #4d96ff;
+            color: white;
+            text-align: center;
+            padding: 35px;
+            border-top: 8px solid #ff7b54;
+        }
+
+        .footer-text {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            font-weight: 600;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 25px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 2rem;
+            transition: all 0.3s;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .social-links a:hover {
+            color: #ff7b54;
+            background: white;
+            transform: translateY(-8px);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            .card-content {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                border-left: none;
+                border-top: 1px solid #e0e0e0;
+            }
+            
+            .title-container h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .card-header {
+                padding: 30px 20px;
+            }
+            
+            .main-content, .sidebar {
+                padding: 30px 25px;
+            }
+            
+            .mvvtabs {
+                flex-direction: column;
+            }
+            
+            .mvvtabs button {
+                width: 100%;
+                padding: 18px;
+            }
+            
+            .catalog-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info li {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .contact-icon {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            
+            .profile-photo {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title-container h1 {
+                font-size: 1.8rem;
+            }
+            
+            .years-badge {
+                font-size: 1.1rem;
+                padding: 8px 20px;
+            }
+            
+            .emprendeworld-section {
+                padding: 30px 20px;
+            }
+            
+            .social-links a {
+                width: 50px;
+                height: 50px;
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="business-card">
+            <!-- ENCABEZADO CON FOTO DE DOÑA BLANCA -->
+            <header class="card-header">
+                <div class="profile-container">
+                    <!-- FOTO DE DOÑA BLANCA - REEMPLAZAR CON FOTO REAL -->
+                    <img src="https://images.unsplash.com/photo-1551836026-d5c2c5af78e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                         alt="Doña Blanca - 40 años de servicio" class="profile-photo" id="donaBlancaPhoto">
+                    
+                    <div class="title-container">
+                        <h1>QUINCALLERÍA DOÑA BLANCA</h1>
+                        <div class="years-badge">40 AÑOS SIRVIENDO A CÚCUTA</div>
+                        <p class="subtitle">"Todo lo que necesitas, ¡bajo un mismo techo!"</p>
+                    </div>
+                </div>
+            </header>
+
+            <!-- CONTENIDO PRINCIPAL -->
+            <div class="card-content">
+                <!-- SECCIÓN PRINCIPAL IZQUIERDA -->
+                <main class="main-content">
+                    <!-- MENÚ MISIÓN/VISIÓN/VALORES -->
+                    <div class="mvvtabs" id="mvvtabs">
+                        <button class="active" data-tab="mision">Misión</button>
+                        <button data-tab="vision">Visión</button>
+                        <button data-tab="valores">Valores</button>
+                    </div>
+                    
+                    <!-- CONTENIDO MISIÓN/VISIÓN/VALORES -->
+                    <div class="mvv-content">
+                        <div class="mvv-item active" id="mision-content">
+                            <h3><i class="fas fa-bullseye"></i> Nuestra Misión</h3>
+                            <p>Proveer a la comunidad de Loma de Bolívar y Cúcuta productos de calidad para el hogar, escuela y cuidado personal, con la calidez, atención personalizada y precios justos que nos han caracterizado por <strong>40 años</strong>.</p>
+                            <p>Ofrecer servicios de costura y arreglos de ropa que solucionen las necesidades diarias de nuestras familias, manteniendo siempre la excelencia y el trato amable que nos distingue.</p>
+                        </div>
+                        
+                        <div class="mvv-item" id="vision-content">
+                            <h3><i class="fas fa-eye"></i> Nuestra Visión</h3>
+                            <p>Seguir siendo por muchos años más el corazón comercial de Loma de Bolívar, creciendo como la quincallería de confianza donde cada cliente se sienta como en casa, mientras apoyamos a Doña Blanca a alcanzar una jubilación digna después de 4 décadas de servicio ininterrumpido.</p>
+                            <p>Expandir nuestro impacto positivo en la comunidad, siendo un ejemplo de emprendimiento familiar sostenible y socialmente responsable.</p>
+                        </div>
+                        
+                        <div class="mvv-item" id="valores-content">
+                            <h3><i class="fas fa-heart"></i> Nuestros Valores</h3>
+                            <p><strong>❤️ Amor al cliente:</strong> Cada persona es tratada como familia, con paciencia y dedicación.</p>
+                            <p><strong>🤝 Honestidad:</strong> Precios justos, productos garantizados y transparencia en todo.</p>
+                            <p><strong>🏠 Compromiso comunitario:</strong> Somos parte esencial del barrio, conocemos y apoyamos a nuestras familias.</p>
+                            <p><strong>✨ Excelencia en servicio:</strong> 40 años de experiencia nos avalan, siempre buscando superar expectativas.</p>
+                            <p><strong>🔄 Adaptabilidad:</strong> Siempre tenemos lo que la comunidad necesita, evolucionando con el tiempo.</p>
+                        </div>
+                    </div>
+
+                    <!-- SECCIÓN DE TESTIMONIOS -->
+                    <h2 class="section-title">Testimonios de Nuestros Clientes</h2>
+                    <div class="testimonials-container">
+                        <!-- TESTIMONIO 1 - ELI SUÁREZ -->
+                        <div class="testimonial">
+                            <div class="testimonial-header">
+                                <div class="testimonial-avatar">ES</div>
+                                <div class="testimonial-info">
+                                    <h4>Eli Suárez</h4>
+                                    <p>Cliente y admiradora</p>
+                                </div>
+                            </div>
+                            <div class="testimonial-text">
+                                <i class="fas fa-quote-left"></i>
+                                "La tienda de Doña Blanca es el alma de Loma de Bolívar. 40 años atendiendo con tanto amor que ya es parte de la familia de todos. Lo increíble es que siempre tiene exactamente lo que uno necesita, ¡y cosas que ni siquiera sabías que existían! Ella tiene esa magia de anticiparse a lo que la comunidad requiere. Gente viene desde otros barrios porque aquí encuentran lo único. ¡40 años de servicio ininterrumpido son testimonio de su dedicación!"
+                            </div>
+                        </div>
+
+                        <!-- TESTIMONIO 2 - MARÍA GONZÁLEZ -->
+                        <div class="testimonial">
+                            <div class="testimonial-header">
+                                <div class="testimonial-avatar">MG</div>
+                                <div class="testimonial-info">
+                                    <h4>María González</h4>
+                                    <p>Cliente por 25 años</p>
+                                </div>
+                            </div>
+                            <div class="testimonial-text">
+                                <i class="fas fa-quote-left"></i>
+                                "Doña Blanca no solo vende productos, ¡vende soluciones y paz mental! En 25 años yendo a su tienda, nunca me ha fallado. Desde un cuaderno urgente para mi hijo hasta arreglar el vestido para una fiesta importante, siempre con una sonrisa y un consejo amable. Es el corazón de nuestro barrio y una inspiración para todos los emprendedores."
+                            </div>
+                        </div>
+
+                        <!-- TESTIMONIO 3 - CARLOS MENDOZA -->
+                        <div class="testimonial">
+                            <div class="testimonial-header">
+                                <div class="testimonial-avatar">CM</div>
+                                <div class="testimonial-info">
+                                    <h4>Carlos Mendoza</h4>
+                                    <p>Vecino y cliente frecuente</p>
+                                </div>
+                            </div>
+                            <div class="testimonial-text">
+                                <i class="fas fa-quote-left"></i>
+                                "Cuando mi mamá estaba enferma, Doña Blanca no solo me guardaba los productos, ¡sino que preguntaba por su salud cada vez que iba! Esa es la clase de persona que es: empresaria con corazón enorme. Su tienda es más que un negocio, es un punto de encuentro donde todos nos sentimos acogidos. Merece todo el apoyo para disfrutar de una jubilación digna."
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SECCIÓN EMPRENDEWORLD -->
+                    <div class="emprendeworld-section">
+                        <h3><i class="fas fa-hands-helping"></i> Ayuda a Doña Blanca a lograr su jubilación</h3>
+                        <p>Después de <strong>40 años de servicio ininterrumpido</strong> a la comunidad, Doña Blanca merece una jubilación digna. A sus 67 años, sigue trabajando con la misma energía y amor de siempre.</p>
+                        <p>Escanea el código QR para conocer el proyecto Emprendeworld y apoyar su sueño de una jubilación tranquila.</p>
+                        
+                        <div class="qr-container">
+                            <div class="qr-code" id="emprendeworldQR">
+                                <!-- QR DE EMPRENDEWORLD - REEMPLAZAR CON QR REAL -->
+                                <div style="font-size: 3rem; color: #4d96ff;">
+                                    <i class="fas fa-qrcode"></i>
+                                </div>
+                                <div style="margin-top: 10px; font-size: 0.9rem; color: #666;">
+                                    QR Emprendeworld
+                                </div>
+                            </div>
+                            <p class="qr-placeholder">(Escanea para apoyar su proyecto de jubilación)</p>
+                        </div>
+                        
+                        <a href="#" class="btn-emprendeworld" id="emprendeworldLink">
+                            <i class="fas fa-hand-holding-heart"></i> Conoce el proyecto completo
+                        </a>
+                    </div>
+                </main>
+
+                <!-- BARRA LATERAL DERECHA -->
+                <aside class="sidebar">
+                    <!-- CATÁLOGO DE PRODUCTOS Y SERVICIOS -->
+                    <h2 class="section-title">Productos y Servicios</h2>
+                    <div class="catalog-container">
+                        <div class="catalog-grid">
+                            <!-- PRODUCTO 1 -->
+                            <div class="catalog-item">
+                                <div class="catalog-icon">
+                                    <i class="fas fa-school"></i>
+                                </div>
+                                <h4>Artículos Escolares</h4>
+                                <ul>
+                                    <li>Cuadernos y libretas</li>
+                                    <li>Lápices y colores</li>
+                                    <li>Mochilas y cartucheras</li>
+                                    <li>Material didáctico</li>
+                                </ul>
+                            </div>
+
+                            <!-- PRODUCTO 2 -->
+                            <div class="catalog-item">
+                                <div class="catalog-icon">
+                                    <i class="fas fa-gem"></i>
+                                </div>
+                                <h4>Belleza y Bisutería</h4>
+                                <ul>
+                                    <li>Accesorios para damas</li>
+                                    <li>Maquillaje económico</li>
+                                    <li>Joyería de fantasía</li>
+                                    <li>Productos de cuidado</li>
+                                </ul>
+                            </div>
+
+                            <!-- PRODUCTO 3 -->
+                            <div class="catalog-item">
+                                <div class="catalog-icon">
+                                    <i class="fas fa-broom"></i>
+                                </div>
+                                <h4>Hogar y Limpieza</h4>
+                                <ul>
+                                    <li>Productos de aseo</li>
+                                    <li>Utensilios domésticos</li>
+                                    <li>Artículos de cocina</li>
+                                    <li>Organizadores</li>
+                                </ul>
+                            </div>
+
+                            <!-- SERVICIO 4 - ARREGLOS DE ROPA -->
+                            <div class="catalog-item">
+                                <div class="catalog-icon">
+                                    <i class="fas fa-tshirt"></i>
+                                </div>
+                                <h4>Arreglos de Ropa</h4>
+                                <ul>
+                                    <li>Arreglos rápidos</li>
+                                    <li>Bajos y ajustes</li>
+                                    <li>Cierres y botones</li>
+                                    <li>Costura general</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- INFORMACIÓN DE CONTACTO -->
+                    <h2 class="section-title" style="margin-top: 50px;">Contacto y Ubicación</h2>
+                    <ul class="contact-info">
+                        <!-- TELÉFONO -->
+                        <li onclick="window.open('tel:+573115779308')">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h3>Llama para pedidos o charlar</h3>
+                                <p>+57 311 577 9308</p>
+                            </div>
+                        </li>
+
+                        <!-- WHATSAPP -->
+                        <li onclick="window.open('https://wa.me/573115779308?text=Hola%20Doña%20Blanca,%20me%20interesa%20hacer%20un%20pedido')">
+                            <div class="contact-icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h3>WhatsApp para pedidos rápidos</h3>
+                                <p>+57 311 577 9308</p>
+                                <p><em>¡Responde rápido!</em></p>
+                            </div>
+                        </li>
+
+                        <!-- DIRECCIÓN -->
+                        <li>
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h3>Visítanos personalmente</h3>
+                                <p><strong>Loma de Bolívar, Cúcuta</strong></p>
+                                <p>Transversal 17 # 3-94</p>
+                                <p><em>Frente a Tienda Yanet</em></p>
+                            </div>
+                        </li>
+
+                        <!-- HORARIO -->
+                        <li>
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h3>Horario de atención</h3>
+                                <p><strong>40 años de constancia</strong></p>
+                                <p>Casi siempre disponible</p>
+                                <p>Lunes a Sábado: 8am - 7pm</p>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <!-- PROMOCIONES -->
+                    <div style="background: linear-gradient(135deg, #ffd166, #ffb347); padding: 25px; border-radius: 15px; margin-top: 40px; text-align: center; color: #333;">
+                        <h3 style="color: #333; margin-bottom: 15px;"><i class="fas fa-gift"></i> Promociones Especiales</h3>
+                        <p style="margin-bottom: 10px;"><strong>🎉 Martes de Descuento:</strong> 10% en artículos escolares</p>
+                        <p style="margin-bottom: 10px;"><strong>👵 Día del Adulto Mayor:</strong> Descuento especial</p>
+                        <p><strong>🎂 Regalo sorpresa en tu cumpleaños</strong></p>
+                    </div>
+                </aside>
+            </div>
+
+            <!-- FOOTER -->
+            <footer class="card-footer">
+                <div class="footer-text">
+                    "Gracias por preferirnos durante 40 años. ¡Tu tiendita de confianza en el corazón de Loma de Bolívar!"
+                </div>
+                
+                <div class="social-links">
+                    <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" title="Compartir por WhatsApp" 
+                       onclick="window.open('https://wa.me/?text=Mira%20esta%20tarjeta%20digital%20de%20Quincallería%20Doña%20Blanca:%20' + window.location.href)">
+                       <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="#" title="Llamar" onclick="window.open('tel:+573115779308')">
+                       <i class="fas fa-phone-alt"></i>
+                    </a>
+                </div>
+                
+                <p style="margin-top: 25px; opacity: 0.9; font-size: 1rem;">
+                    © 2024 Quincallería Doña Blanca - 40 años sirviendo con amor | Cúcuta, Colombia
+                </p>
+            </footer>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // FUNCIÓN PARA LAS PESTAÑAS MISIÓN/VISIÓN/VALORES
+        document.addEventListener('DOMContentLoaded', function() {
+            // Pestañas Misión/Visión/Valores
+            const tabButtons = document.querySelectorAll('.mvvtabs button');
+            const tabContents = document.querySelectorAll('.mvv-item');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remover clase active de todos los botones
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    // Agregar clase active al botón clickeado
+                    button.classList.add('active');
+                    
+                    // Ocultar todos los contenidos
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Mostrar el contenido correspondiente
+                    const tabId = button.getAttribute('data-tab') + '-content';
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // También para los enlaces del menú (si los agregas después)
+            const menuTabButtons = document.querySelectorAll('.mvv-tab-btn');
+            menuTabButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Activar el botón correspondiente en las pestañas
+                    tabButtons.forEach(btn => {
+                        if(btn.getAttribute('data-tab') === tabId) {
+                            btn.click();
+                        }
+                    });
+                });
+            });
+            
+            // Función para actualizar el QR y enlace de Emprendeworld
+            function updateEmprendeworldLink(link) {
+                if (link) {
+                    document.getElementById('emprendeworldLink').href = link;
+                    
+                    // Aquí podrías generar un QR real si tuvieras una librería
+                    // Por ahora dejamos el placeholder
+                    console.log('Enlace de Emprendeworld actualizado:', link);
+                }
+            }
+            
+            // Función para actualizar la foto de Doña Blanca
+            function updateProfilePhoto(imageUrl) {
+                if (imageUrl) {
+                    document.getElementById('donaBlancaPhoto').src = imageUrl;
+                }
+            }
+            
+            // EXPONER FUNCIONES PARA USO EXTERNO
+            window.updateEmprendeworldLink = updateEmprendeworldLink;
+            window.updateProfilePhoto = updateProfilePhoto;
+            
+            // Mensaje de bienvenida
+            console.log('Tarjeta digital de Quincallería Doña Blanca cargada exitosamente!');
+        });
+    </script>
+</body>
+</html>
