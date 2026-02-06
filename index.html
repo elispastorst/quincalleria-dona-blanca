@@ -575,6 +575,65 @@
                 height: 50px;
                 font-size: 1.6rem;
             }
+        }        /* SECCIÓN NUESTRA TIENDA */
+        .store-section {
+            margin: 40px 0;
+            padding: 0 40px;
+        }
+
+        .store-photo-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .store-photo {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border: 5px solid white;
+            transition: transform 0.5s ease;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .store-photo:hover {
+            transform: scale(1.02);
+        }
+
+        .store-description {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .store-description p {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            color: #444;
+        }
+
+        .store-description i {
+            color: #ff7b54;
+            margin-right: 10px;
+            font-size: 1.3rem;
+        }
+
+        @media (max-width: 768px) {
+            .store-section {
+                padding: 0 20px;
+            }
+            
+            .store-photo-container {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -600,6 +659,25 @@
             <div class="card-content">
                 <!-- SECCIÓN PRINCIPAL IZQUIERDA -->
                 <main class="main-content">
+
+                <!-- SECCIÓN NUESTRA TIENDA -->
+                <div class="store-section">
+                    <h2 style="text-align: center; color: #ff7b54; font-size: 2rem; margin: 40px 0 30px 0; padding-bottom: 15px; border-bottom: 4px solid #4d96ff; display: inline-block; width: 100%; text-align: center;">
+                        <i class="fas fa-store"></i> Nuestra Tienda
+                    </h2>
+                    <div class="store-photo-container">
+                        <img src="https://raw.githubusercontent.com/elispastorst/quincaller%C3%ADa-dona-blanca/main/g4.jpg" 
+                             alt="Quincallería Doña Blanca - 40 años en Loma de Bolívar" 
+                             class="store-photo">
+                        <div class="store-description">
+                            <p>Ubicada en el corazón de Loma de Bolívar, nuestra tienda ha sido por <strong>40 años</strong> el lugar de confianza donde las familias encuentran todo lo que necesitan para el hogar, escuela y cuidado personal.</p>
+                            <p>Este espacio no es solo un negocio, es parte de la historia del barrio. Por aquí han pasado generaciones enteras de familias que confían en la atención personalizada y los productos de calidad que ofrecemos.</p>
+                            <p><i class="fas fa-map-marker-alt"></i> <strong>Visítanos:</strong> Transversal 17 # 3-94, frente a Tienda Yanet, Loma de Bolívar, Cúcuta</p>
+                            <p><i class="fas fa-clock"></i> <strong>Horario:</strong> Lunes a Sábado: 8:00 AM - 7:00 PM</p>
+                            <p><i class="fas fa-heart"></i> <strong>40 años</strong> de servicio, amor y compromiso con nuestra comunidad.</p>
+                        </div>
+                    </div>
+                </div>                <main class="main-content">
                     <!-- MENÚ MISIÓN/VISIÓN/VALORES -->
                     <div class="mvvtabs" id="mvvtabs">
                         <button class="active" data-tab="mision">Misión</button>
