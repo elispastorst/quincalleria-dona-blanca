@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Variedades Blanca - 25 años sirviendo a Cúcuta - </title>
+    <title>Variedades Blanca - 25 años sirviendo a Cúcuta</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* RESET Y CONFIGURACIÓN GENERAL */
@@ -66,7 +66,7 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
             object-fit: cover;
             object-position: center;
-            background-color: #f0f0f0; /* Color de fondo mientras carga la foto */
+            background-color: #f0f0f0;
         }
 
         .title-container h1 {
@@ -502,83 +502,12 @@
             transform: translateY(-8px);
         }
 
-        /* RESPONSIVE */
-        @media (max-width: 992px) {
-            .card-content {
-                flex-direction: column;
-            }
-            
-            .sidebar {
-                border-left: none;
-                border-top: 1px solid #e0e0e0;
-            }
-            
-            .title-container h1 {
-                font-size: 2.2rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .card-header {
-                padding: 30px 20px;
-            }
-            
-            .main-content, .sidebar {
-                padding: 30px 25px;
-            }
-            
-            .mvvtabs {
-                flex-direction: column;
-            }
-            
-            .mvvtabs button {
-                width: 100%;
-                padding: 18px;
-            }
-            
-            .catalog-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .contact-info li {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .contact-icon {
-                margin-right: 0;
-                margin-bottom: 20px;
-            }
-            
-            .profile-photo {
-                width: 150px;
-                height: 150px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .title-container h1 {
-                font-size: 1.8rem;
-            }
-            
-            .years-badge {
-                font-size: 1.1rem;
-                padding: 8px 20px;
-            }
-            
-            .emprendeworld-section {
-                padding: 30px 20px;
-            }
-            
-            .social-links a {
-                width: 50px;
-                height: 50px;
-                font-size: 1.6rem;
-            }
-        }        /* SECCIÓN NUESTRA TIENDA */
+        /* SECCIÓN NUESTRA TIENDA - CORREGIDO */
         .store-section {
             margin: 40px 0;
             padding: 0 40px;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .store-photo-container {
@@ -587,13 +516,23 @@
             gap: 30px;
             align-items: center;
             margin-top: 20px;
+            width: 100%;
+            box-sizing: border-box;
         }
 
+        /* ESTA ES LA PARTE CRÍTICA QUE ESTABA CAUSANDO EL PROBLEMA - CORREGIDO */
         .store-photo {
-    max-width: 100vw;
-    width: calc(100% - 30px); /* Ajusta según el padding */
-    margin: 0 auto;
-}
+            flex: 1;
+            min-width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border: 5px solid white;
+            transition: transform 0.5s ease;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
         }
 
         .store-photo:hover {
@@ -607,6 +546,8 @@
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .store-description p {
@@ -622,13 +563,106 @@
             font-size: 1.3rem;
         }
 
-        @media (max-width: 768px) {
-            .store-section {
-                padding: 0 20px;
+        /* RESPONSIVE - CORREGIDO */
+        @media (max-width: 992px) {
+            .card-content {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                border-left: none;
+                border-top: 1px solid #e0e0e0;
+            }
+            
+            .title-container h1 {
+                font-size: 2.2rem;
             }
             
             .store-photo-container {
                 flex-direction: column;
+            }
+            
+            .store-photo, .store-description {
+                min-width: 100%;
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .card-header {
+                padding: 30px 15px;
+            }
+            
+            .main-content, .sidebar {
+                padding: 25px 15px;
+            }
+            
+            .store-section {
+                padding: 0 15px;
+            }
+            
+            .mvvtabs {
+                flex-direction: column;
+            }
+            
+            .mvvtabs button {
+                width: 100%;
+                padding: 15px;
+            }
+            
+            .catalog-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info li {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .contact-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .profile-photo {
+                width: 140px;
+                height: 140px;
+            }
+            
+            /* AQUÍ LA CORRECCIÓN MÁS IMPORTANTE */
+            .store-photo {
+                max-width: 100%;
+                width: calc(100% - 30px);
+                margin: 0 auto;
+                border-radius: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title-container h1 {
+                font-size: 1.8rem;
+            }
+            
+            .years-badge {
+                font-size: 1.1rem;
+                padding: 8px 20px;
+            }
+            
+            .emprendeworld-section {
+                padding: 25px 15px;
+            }
+            
+            .social-links a {
+                width: 50px;
+                height: 50px;
+                font-size: 1.6rem;
+            }
+            
+            .store-photo {
+                width: calc(100% - 20px);
+                margin: 0 auto;
+                border-width: 3px;
             }
         }
     </style>
@@ -673,7 +707,8 @@
                             <p><i class="fas fa-heart"></i> <strong>25 años</strong> de servicio, amor y compromiso con nuestra comunidad.</p>
                         </div>
                     </div>
-                </div>                <main class="main-content">
+                </div>
+
                     <!-- MENÚ MISIÓN/VISIÓN/VALORES -->
                     <div class="mvvtabs" id="mvvtabs">
                         <button class="active" data-tab="mision">Misión</button>
@@ -719,8 +754,7 @@
                             </div>
                             <div class="testimonial-text">
                                 <i class="fas fa-quote-left"></i>
-                                "Variedades Blanca es el alma de Loma de Bolívar. 25 años atendiendo con tanto amor que ya es parte de la familia de todos. Lo increíble es que siempre tiene exactamente lo que uno necesita, ¡y cosas que ni siquiera sabías que existían! Ella tiene esa magia de anticiparse a lo que la comunidad requiere. Gente viene desde otros barrios porque aquí encuentran lo único. ¡25
-                                 años de servicio ininterrumpido son testimonio de su dedicación!"
+                                "Variedades Blanca es el alma de Loma de Bolívar. 25 años atendiendo con tanto amor que ya es parte de la familia de todos. Lo increíble es que siempre tiene exactamente lo que uno necesita, ¡y cosas que ni siquiera sabías que existían! Ella tiene esa magia de anticiparse a lo que la comunidad requiere. Gente viene desde otros barrios porque aquí encuentran lo único. ¡25 años de servicio ininterrumpido son testimonio de su dedicación!"
                             </div>
                         </div>
 
@@ -771,14 +805,13 @@
                 QR Emprendeworld
             </div>
         </div>
-                           </div>
-                            <p class="qr-placeholder">(Escanea para apoyar su proyecto de jubilación)</p>
-                        </div>
+        <p class="qr-placeholder">(Escanea para apoyar su proyecto de jubilación)</p>
+    </div>
                         
-                        <a href="#" class="btn-emprendeworld" id="emprendeworldLink">
-                            <i class="fas fa-hand-holding-heart"></i> Conoce el proyecto completo
-                        </a>
-                    </div>
+    <a href="#" class="btn-emprendeworld" id="emprendeworldLink">
+        <i class="fas fa-hand-holding-heart"></i> Conoce el proyecto completo
+    </a>
+</div>
                 </main>
 
                 <!-- BARRA LATERAL DERECHA -->
@@ -957,29 +990,10 @@
                 });
             });
             
-            // También para los enlaces del menú (si los agregas después)
-            const menuTabButtons = document.querySelectorAll('.mvv-tab-btn');
-            menuTabButtons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const tabId = this.getAttribute('data-tab');
-                    
-                    // Activar el botón correspondiente en las pestañas
-                    tabButtons.forEach(btn => {
-                        if(btn.getAttribute('data-tab') === tabId) {
-                            btn.click();
-                        }
-                    });
-                });
-            });
-            
             // Función para actualizar el QR y enlace de Emprendeworld
             function updateEmprendeworldLink(link) {
                 if (link) {
                     document.getElementById('emprendeworldLink').href = link;
-                    
-                    // Aquí podrías generar un QR real si tuvieras una librería
-                    // Por ahora dejamos el placeholder
                     console.log('Enlace de Emprendeworld actualizado:', link);
                 }
             }
